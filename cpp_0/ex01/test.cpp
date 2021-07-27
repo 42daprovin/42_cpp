@@ -1,14 +1,14 @@
 
 #include <iostream>
 #include <cstring>
+#include "test_class.hpp"
 
 int main(void)
 {
-	int	&i;
 	std::string hola;
+	test	t;
 
-	std::cin >> hola;
-	i = hola.length();
-	std::cout << i  << std::endl;
+	t.i = 2;
+	std::cout << t.i << std::endl;
 	return (0);
 }
