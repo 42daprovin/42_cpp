@@ -2,7 +2,7 @@
 #include <iostream>
 #include "contact_class.hpp"
 
-contact::contact(void) : _full(0), _old(0)
+contact::contact(void) : _old(0), _full(0)
 {
 	return ;	
 }

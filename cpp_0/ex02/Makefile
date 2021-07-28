@@ -1,12 +1,11 @@
-NAME	= BestPhoneBook
+NAME	= GlobalBanksters
 
-SRCS	= phone_book.cpp \
-		  contact_class.cpp \
-		  utils.cpp
+SRCS	= test.cpp \
+		  Account.cpp \
 
 OBJS	= ${SRCS:.cpp=.o}
 
-CFLAGS = -Wall -Werror -Wextra -I includes
+CFLAGS = -Wall -Werror -Wextra
 
 .cpp.o:
 	clang++ ${CFLAGS} -c $< -o ${<:.cpp=.o}

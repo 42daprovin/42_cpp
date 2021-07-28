@@ -48,17 +48,20 @@ void	add_contact(contact *contact)
 
 void	search_contact(contact *contact)
 {
-	int i;
+	int 		i;
+	std::string	input;
 
 	if (print_list(contact))
 		return ;
 	std::cout << "Write contact index:";
-	std::cin >> i;
+	std::cin >> input;	
+	i = std::atoi(input.c_str());
 	std::cout << std::endl;
 	while (i < 1 || i > 8 || contact[i - 1].getfull() == 0)
 	{
 		std::cout << "Invalid index, try again:";
-		std::cin >> i;	
+		std::cin >> input;	
+		i = std::atoi(input.c_str());
 		std::cout << std::endl;
 	}
 	print_contact_info(contact[i - 1]);
