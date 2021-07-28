@@ -27,4 +27,6 @@ int		get_oldest(contact *contact);
 
 int		print_list(contact *contact);
 
+void	print_contact_info(contact contact);
+
 #endif
