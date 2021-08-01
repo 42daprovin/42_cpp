@@ -9,13 +9,15 @@ class Zombie
 	public:
 			
 		void	announce(void) const;
+		void	setname(std::string name);
 
+		Zombie(void);
 		Zombie(std::string name);
 		~Zombie(void);
 
 	private:
 		
-		const std::string	_name;
+		std::string	_name;
 };
 
 #endif
