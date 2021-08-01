@@ -7,12 +7,13 @@
 class Karen
 {
 	typedef void (Karen::*complains)(void);
-	complains comp[4]; 
-f
+	complains comp[5]; 
+
 	void	debug(void);
 	void	info(void);
 	void	warning(void);
 	void	error(void);
+	void	nothing(void);
 	int		select(std::string level);
 	
 	public:

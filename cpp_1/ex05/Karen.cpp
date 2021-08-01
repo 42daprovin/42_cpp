@@ -26,24 +26,25 @@ void Karen::error()
 	return ;
 }
 
+void Karen::nothing(){};
+
 Karen::Karen()
 {
 	comp[0] = &Karen::debug;
 	comp[1] = &Karen::info;
 	comp[2] = &Karen::warning;
 	comp[3] = &Karen::error;
+	comp[4] = &Karen::nothing;
 }
 
 int		Karen::select(std::string level)
 {
-	if (level == "DEBUG")
-		return (0);
-	else if (level == "INFO")
-		return (1);
-	else if (level == "WARNING")
-		return (2);
-	else
-		return (3);
+	int i;
+
+	("DEBUG" == level && (i = 1)) || ("INFO" == level && (i = 2)) || ("WARNING" == level && (i = 3))
+		|| ("ERROR" == level && (i = 4)) || (i = 5);
+
+	return i - 1;
 }
 
 void	Karen::complain(std::string level)
