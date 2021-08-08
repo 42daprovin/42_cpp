@@ -1,12 +1,14 @@
-NAME	= ex01
+NAME	= ex03
 
 SRCS	= main.cpp \
 		  ClapTrap.cpp \
-		  ScavTrap.cpp
+		  ScavTrap.cpp \
+		  FragTrap.cpp \
+		  DiamondTrap.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -Wshadow
 
 .cpp.o:
 	clang++ ${CFLAGS} -c $< -o ${<:.cpp=.o}
