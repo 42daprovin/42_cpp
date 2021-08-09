@@ -26,7 +26,10 @@ Character::~Character(void)
 	for (int i=0; i < 4; i++)
 	{
 		if (this->inventory[i])
+		{
 			delete this->inventory[i];
+			this->inventory[i] = NULL;
+		}
 	}
 	return ;
 }
@@ -37,7 +40,10 @@ Character &		Character::operator=(Character const & rhs)
 	
 	this->_name = rhs.getName();
 	while (this->inventory[i])
+	{
 		delete this->inventory[i]; 
+		this->inventory[i] = NULL;
+	}
 
 	i = 0;
 	while (i < 4)
@@ -63,7 +69,7 @@ void	Character::equip(AMateria *m)
 
 	while (this->inventory[i])
 		i++;
-	this->inventory[i] = m->clone();
+	this->inventory[i] = m->clone(); //can be a leak but i dont know how to do this project without leaks
 }
 
 void	Character::unequip(int idx)
@@ -74,6 +80,7 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter & target)
 {
-	this->inventory[idx]->use(target);
+	if (this->inventory[idx])
+		this->inventory[idx]->use(target);
 	return ;
 }

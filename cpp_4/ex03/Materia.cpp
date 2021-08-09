@@ -121,7 +121,10 @@ MateriaSource::~MateriaSource(void)
 	for(int i=0; i < 4; i++)
 	{
 		if (this->known[i])
+		{
 			delete this->known[i];
+			this->known[i] = NULL;
+		}
 	}
 	return ;
 }
@@ -131,7 +134,10 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
 	int i = 0;	
 
 	while (this->known[i])
+	{
 		delete this->known[i];
+		this->known[i] = NULL;
+	}
 
 	i = 0;
 	while (i < 4)
@@ -152,7 +158,7 @@ void	MateriaSource::learnMateria(AMateria *src)
 
 	while (this->known[i])
 		i++;
-	this->known[i] = src->clone();
+	this->known[i] = src->clone(); //can be a leak
 
 	return ;
 }
