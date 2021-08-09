@@ -1,6 +1,6 @@
-NAME	= replace
+NAME	= ex02
 
-SRCS	= main.cpp
+SRCS	= main.cpp \
 
 OBJS	= ${SRCS:.cpp=.o}
 
@@ -15,7 +15,6 @@ ${NAME}: ${OBJS}
 all: ${NAME}
 
 clean:
-	rm -f *.replace
 	rm -f ${OBJS}
 
 fclean: clean
