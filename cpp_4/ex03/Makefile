@@ -1,6 +1,8 @@
-NAME	= ex02
+NAME	= ex03
 
 SRCS	= main.cpp \
+		  Materia.cpp \
+		  Character.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 

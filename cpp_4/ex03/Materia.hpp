@@ -2,7 +2,8 @@
 # define MATERIA_HPP
 
 # include <iostream>
-# include "Character.hpp"
+
+class ICharacter;
 
 class AMateria
 {
@@ -22,7 +23,7 @@ class AMateria
 		AMateria &	operator=(AMateria const & rhs);
 
 		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
+		virtual void use(ICharacter & target);
 };
 
 class IMateriaSource
@@ -58,5 +59,27 @@ class Cure : public AMateria
 
 		AMateria	*clone(void) const;
 };
+
+class MateriaSource : public IMateriaSource
+{
+	public:
+
+		MateriaSource(void);
+		MateriaSource(MateriaSource const & src);
+		~MateriaSource(void);
+
+		MateriaSource &	operator=(MateriaSource const & rhs);
+
+		AMateria *	getKnown(int i) const;
+
+		void	learnMateria(AMateria *);
+		AMateria *	createMateria(std::string const & type);
+
+	private:	
+		
+		AMateria	*known[4];
+};
+
+# include "Character.hpp"
 
 #endif

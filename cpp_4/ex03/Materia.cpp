@@ -98,3 +98,79 @@ AMateria *	Cure::clone(void) const
 {
 	return (new Cure(*this));
 }
+
+//==========MateriaSource======
+
+MateriaSource::MateriaSource(void)
+{
+	for(int i=0; i < 4; i++)
+		this->known[i] = NULL;
+	return ;
+}
+
+MateriaSource::MateriaSource(MateriaSource const & src)
+{
+	for(int i=0; i < 4; i++)
+		this->known[i] = NULL;
+	*this = src;
+	return ;
+}
+
+MateriaSource::~MateriaSource(void)
+{
+	for(int i=0; i < 4; i++)
+	{
+		if (this->known[i])
+			delete this->known[i];
+	}
+	return ;
+}
+
+MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
+{
+	int i = 0;	
+
+	while (this->known[i])
+		delete this->known[i];
+
+	i = 0;
+	while (i < 4)
+		if (rhs.getKnown(i))
+			this->known[i] = rhs.getKnown(i)->clone(); 
+
+	return *this;
+}
+
+AMateria *	MateriaSource::getKnown(int i) const
+{
+	return (this->known[i]);
+}
+
+void	MateriaSource::learnMateria(AMateria *src)
+{
+	int i = 0;		
+
+	while (this->known[i])
+		i++;
+	this->known[i] = src->clone();
+
+	return ;
+}
+
+AMateria *	MateriaSource::createMateria(std::string const & type)
+{
+	for(int i=0; i < 4; i++)
+	{
+		if (this->known[i]->getType() == type)
+			return this->known[i]->clone();
+	}
+	return 0;
+}
+
+
+
+
+
+
+
+

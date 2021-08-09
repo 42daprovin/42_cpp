@@ -4,6 +4,8 @@
 # include <iostream>
 # include "Materia.hpp"
 
+class AMateria;
+
 class ICharacter
 {
 	public:
