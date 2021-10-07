@@ -67,14 +67,32 @@ void	Character::equip(AMateria *m)
 {
 	int	i = 0;
 
-	while (this->inventory[i])
+	while (this->inventory[i] && i < 4)
+	{
+		if (m == this->inventory[i])
+		{
+			std::cout << "This materia is already equiped" << std::endl;
+			return ;
+		}
 		i++;
-	this->inventory[i] = m->clone(); //can be a leak but i dont know how to do this project without leaks
+	}	
+	if (i != 4)
+	{
+		this->inventory[i] = m;
+		std::cout << "Materia equiped" << std::endl;
+	}
+	else
+		std::cout << "Inventory full" << std::endl;
+	return ;
 }
 
 void	Character::unequip(int idx)
 {
-	this->inventory[idx] = NULL;
+	if (this->inventory[idx] != NULL)
+	{
+		this->inventory[idx] = NULL;
+		std::cout << "Materia unequiped" << std::endl;
+	}
 	return ;
 }
 

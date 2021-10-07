@@ -1,15 +1,19 @@
 NAME	= BestPhoneBook
 
 SRCS	= phone_book.cpp \
-		  contact_class.cpp \
-		  utils.cpp
+	  PhoneBook_class.cpp \
+	  contact_class.cpp \
+	  utils.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
+DEPS 	= includes/contact_class.hpp \
+	  includes/PhoneBook_class.hpp
+
 CFLAGS = -Wall -Werror -Wextra -I includes
 
-.cpp.o:
-	clang++ ${CFLAGS} -c $< -o ${<:.cpp=.o}
+%.o: %.cpp ${DEPS}
+	clang++ -c -o $@ $< ${CFLAGS}
 
 ${NAME}: ${OBJS}
 	clang++ ${CFLAGS} ${OBJS} -o ${NAME}
@@ -22,4 +26,4 @@ clean:
 fclean: clean
 	rm -f ${NAME}
 
-re: fclean all
+re: fclean all 

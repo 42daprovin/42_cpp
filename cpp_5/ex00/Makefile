@@ -1,21 +1,21 @@
-NAME	= GlobalBanksters
+NAME	= ex00
 
-SRCS	= test.cpp \
-		  Account.cpp \
+SRCS	= main.cpp \
+	  Bureaucrat.cpp \
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
-DEPS = Account.hpp
+DEPS	= Bureaucrat.hpp
+
+all: ${NAME}
 
 %.o: %.cpp ${DEPS}
-	clang++  -c -o $@ $< ${CFLAGS}
+	clang++ -c -o $@ $< ${CFLAGS}
 
 ${NAME}: ${OBJS}
 	clang++ ${CFLAGS} ${OBJS} -o ${NAME}
-
-all: ${NAME}
 
 clean:
 	rm -f ${OBJS}

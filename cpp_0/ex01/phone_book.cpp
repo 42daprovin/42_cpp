@@ -2,74 +2,11 @@
 #include <iostream>
 #include <cstring>
 #include "contact_class.hpp"
-
-void	add_contact(contact *contact)
-{
-	int				i;
-	int				j;
-	std::string		str;
-
-	i = 0;
-	while (i < 8)
-	{
-		if (contact[i].getfull() == 0)
-			break ;
-		i++;
-	}
-	if (i == 8)
-		i = get_oldest(contact);
-	else
-		for (j = 0; j < 8; j++)
-		{
-			if (j == i)
-				contact[j].setold(0);
-			else
-				contact[j].setold(1);
-		}
-	contact[i].setfull();
-	std::cout << "First Name:";
-	std::cin.ignore(1, '\n');
-	std::getline(std::cin, contact[i].first_name);
-	std::cout << std::endl;
-	std::cout << "Last Name:";
-	std::getline(std::cin, contact[i].last_name);
-	std::cout << std::endl;
-	std::cout << "Nickname:";
-	std::getline(std::cin, contact[i].nickname);
-	std::cout << std::endl;
-	std::cout << "Phone Number:";
-	std::getline(std::cin, contact[i].phone_number);
-	std::cout << std::endl;
-	std::cout << "Darckest Secret:";
-	std::getline(std::cin, contact[i].darkest_secret);
-	std::cout << std::endl;
-	std::cout << "Contact saved correctly!" << std::endl << std::endl;
-}
-
-void	search_contact(contact *contact)
-{
-	int 		i;
-	std::string	input;
-
-	if (print_list(contact))
-		return ;
-	std::cout << "Write contact index:";
-	std::cin >> input;	
-	i = std::atoi(input.c_str());
-	std::cout << std::endl;
-	while (i < 1 || i > 8 || contact[i - 1].getfull() == 0)
-	{
-		std::cout << "Invalid index, try again:";
-		std::cin >> input;	
-		i = std::atoi(input.c_str());
-		std::cout << std::endl;
-	}
-	print_contact_info(contact[i - 1]);
-}
+#include "PhoneBook_class.hpp"
 
 int		main(void)
 {
-	contact			contact[8];
+	PhoneBook		p_book;
 	std::string		order;
 
 	do
@@ -82,9 +19,9 @@ int		main(void)
 		else
 		{
 			if (!order.compare("ADD"))
-				add_contact(contact);
+				p_book.add();
 			else if (!order.compare("SEARCH"))
-				search_contact(contact);
+				p_book.search();
 		}
 	}
 	while (order.compare("EXIT"));

@@ -133,7 +133,7 @@ MateriaSource & MateriaSource::operator=(MateriaSource const & rhs)
 {
 	int i = 0;	
 
-	while (this->known[i])
+	while (this->known[i] && i < 4)
 	{
 		delete this->known[i];
 		this->known[i] = NULL;
@@ -158,25 +158,18 @@ void	MateriaSource::learnMateria(AMateria *src)
 
 	while (this->known[i])
 		i++;
-	this->known[i] = src->clone(); //can be a leak
+	this->known[i] = src->clone();
 
 	return ;
 }
 
 AMateria *	MateriaSource::createMateria(std::string const & type)
 {
-	for(int i=0; i < 4; i++)
+	for(int i=0; i < 4 && this->known[i] != NULL; i++)
 	{
 		if (this->known[i]->getType() == type)
 			return this->known[i]->clone();
 	}
+	std::cout << "The materia doesn't exist" << std::endl;
 	return 0;
 }
-
-
-
-
-
-
-
-
