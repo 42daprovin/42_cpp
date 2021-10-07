@@ -25,7 +25,7 @@ Bureaucrat::~Bureaucrat(void)
 
 Bureaucrat &	Bureaucrat::operator=(Bureaucrat const & rhs)
 {
-	(std::string)this->_name = (std::string)rhs.get_name();
+	(std::string)this->_name = rhs.get_name();
 	this->_grade = rhs.get_grade();
 	return (*this);
 }
@@ -54,6 +54,21 @@ void	Bureaucrat::dec_grade(void)
 		throw Bureaucrat::GradeTooLowException();		
 	else
 		this->_grade++;
+}
+
+void	Bureaucrat::signForm(Form & f)
+{
+	if (this->_grade > f.get_grade_sign())
+		std::cout << this->_name << " cannot sign " << f.get_name()
+			<< " because doesn't have enought grade" << std::endl;
+	else if (f.get_sign() == 1)
+		std::cout << this->_name << " cannot sign " << f.get_name()
+			<< " because form is already signed" << std::endl;
+	else
+	{
+		f.set_sign(1);
+		std::cout << this->_name << " signs " << f.get_name() << std::endl;
+	}
 }
 
 std::ostream &	operator<<(std::ostream & os, Bureaucrat const & rhs)
