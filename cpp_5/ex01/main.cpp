@@ -1,48 +1,35 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int		main(void)
 {
 	/*Constructors and operators*/
 	{
-		Bureaucrat	a;	
-		Bureaucrat	b("Pepe", 75);
-		Bureaucrat 	c(b);
-		Bureaucrat	d = b;
+		Form	a;	
+		Form	b("Form1", 75, 75);
+		Form 	c(b);
+		Form	d = b;
 		
 		std::cout << a << std::endl;
 		std::cout << b << std::endl;
 		std::cout << c << std::endl;
 		std::cout << d << std::endl;
 	}
-	/*Inc and Dec*/
-	{
-		Bureaucrat a("David", 75);
-		Bureaucrat b("Maria", 75);
-
-		std::cout << "Original Grades" << std::endl;
-		std::cout << a << std::endl;
-		std::cout << b << std::endl;
-		std::cout << "Incrament " << a.get_name() << " and decrement " << b.get_name() << std::endl;
-		a.inc_grade();
-		b.dec_grade();
-		std::cout << a << std::endl;
-		std::cout << b << std::endl;
-	}
 	/*Exceptions*/
 	{
-		std::cout << "Create a Bureaucrat with grade 151" << std::endl;
+		std::cout << "Create a Form with grade 151" << std::endl;
 		try
 		{
-			Bureaucrat	a("David", 151);
+			Form	a("Form1", 151, 60);
 		}
 		catch(std::exception & e)
 		{
 			std::cerr << "Error: " << e.what() << std::endl;
 		}
-		std::cout << "Create a Bureaucrat with grade 0" << std::endl;
+		std::cout << "Create a Form with grade 0" << std::endl;
 		try
 		{
-			Bureaucrat	b("Maria", 0);
+			Form	b("Form2", 60, 0);
 		}
 		catch(std::exception & e)
 		{
@@ -50,28 +37,42 @@ int		main(void)
 		}
 		try
 		{
-			Bureaucrat a("David", 150);
+			Bureaucrat	a("David", 150);
+			Form		form("Form1", 90, 90);
+
 			std::cout << a << std::endl;
-			std::cout << "Decrement " << a.get_name() << std::endl;
-			a.dec_grade();
-			std::cout << a << std::endl;
+			std::cout << form << std::endl;
+			std::cout << "Try beSigned function:" << std::endl;
+			form.beSigned(a);
+			std::cout << form << std::endl;
 		}
 		catch(std::exception & e)
 		{
 			std::cerr << "Error: " << e.what() << std::endl;
 		}		
-		try
+		/* beSigned and signForm */
 		{
-			Bureaucrat b("Maria", 1);
-			std::cout << b << std::endl;
-			std::cout << "Increment " << b.get_name() << std::endl;
-			b.inc_grade();
-			std::cout << b << std::endl;
-		}
-		catch(std::exception & e)
-		{
-			std::cerr << "Error: " << e.what() << std::endl;
-		}
+			Bureaucrat	a("David", 150);
+			Bureaucrat	b("Maria", 30);
+			Form		form1("Form1", 90, 90);
+			Form		form2("Form2", 100, 100);
 
+			std::cout << a << std::endl;
+			std::cout << b << std::endl;
+			std::cout << form1 << std::endl;
+			std::cout << form2 << std::endl;
+			
+			std::cout << "beSigned Form2 by Maria:" << std::endl;
+			form2.beSigned(b);
+			std::cout << form2 << std::endl; 
+
+			std::cout << "signForm Form2 by Maria:" << std::endl;
+			b.signForm(form2);
+			std::cout << "signForm Form1 by David:" << std::endl;
+			a.signForm(form1);
+			std::cout << "signForm Form1 by Maria:" << std::endl;
+			b.signForm(form1);
+			std::cout << form1 << std::endl;
+		}
 	}
 }

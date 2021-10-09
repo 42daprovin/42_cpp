@@ -4,6 +4,8 @@
 # include <iostream>
 # include "Bureaucrat.hpp"
 
+class Bureaucrat;
+
 class Form
 {
 	public:
@@ -40,8 +42,8 @@ class Form
 		};
 
 		std::string const	get_name(void) const;
-		int const			get_grade_sign(void) const;
-		int const			get_grade_exec(void) const;
+		int					get_grade_sign(void) const;
+		int 				get_grade_exec(void) const;
 		bool				get_sign(void) const;
 
 		void				set_sign(bool s);

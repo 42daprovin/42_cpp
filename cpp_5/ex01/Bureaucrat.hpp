@@ -2,7 +2,8 @@
 # define BUREAUCRAT_HPP
 
 # include <iostream>
-# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -55,5 +56,7 @@ class Bureaucrat
 };
 
 std::ostream &	operator<<(std::ostream & os, Bureaucrat const & rhs);
+
+# include "Form.hpp"
 
 #endif

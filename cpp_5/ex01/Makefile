@@ -1,13 +1,15 @@
-NAME	= ex00
+NAME	= ex01
 
 SRCS	= main.cpp \
 	  Bureaucrat.cpp \
+	  Form.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
-DEPS	= Bureaucrat.hpp
+DEPS	= Bureaucrat.hpp \
+	  Form.hpp
 
 all: ${NAME}
 
