@@ -2,14 +2,16 @@ NAME	= ex01
 
 SRCS	= main.cpp \
 	  Bureaucrat.cpp \
-	  Form.cpp
+	  Form.cpp \
+	  ShrubberyCreationForm.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
 DEPS	= Bureaucrat.hpp \
-	  Form.hpp
+	  Form.hpp \
+	  ShrubberyCreationForm.hpp
 
 all: ${NAME}
 

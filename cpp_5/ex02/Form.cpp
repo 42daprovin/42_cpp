@@ -68,6 +68,16 @@ void		Form::beSigned(Bureaucrat const & b)
 	return ;
 }
 
+void	Form::execute(Bureaucrat const & executor) const
+{
+	if (this->get_sign() == false)									
+		throw Form::FormNotSignedException();
+	else if (this->get_grade_exec() < executor.get_grade())
+		throw Form::GradeTooLowException();
+	else
+		this->execAction();
+}
+
 std::ostream &	operator<<(std::ostream & os, Form const & rhs)
 {
 	os << rhs.get_name() << ", form is";

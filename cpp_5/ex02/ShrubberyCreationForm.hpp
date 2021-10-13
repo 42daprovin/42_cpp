@@ -14,13 +14,13 @@ class ShrubberyCreationForm: public Form
 
 		ShrubberyCreationForm &	operator=(ShrubberyCreationForm const & rhs);
 
-		void	execute(Bureaucrat const & executor);
 
-		std::string const	get_name(void) const;
+		std::string const	get_target(void) const;
 
 	private:
 
 		std::string const	_target;
+		void	execAction(void) const;
 };
 
 #endif
