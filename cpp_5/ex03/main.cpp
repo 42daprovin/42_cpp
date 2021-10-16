@@ -3,47 +3,33 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+#include "Intern.hpp"
 
 int		main(void)
 {
-	ShrubberyCreationForm	shrub("Trees");
-	PresidentialPardonForm	presi("Tostarica");
-	RobotomyRequestForm		robot("Martin");
+	Form	*shrub;
+	Form	*presi;
+	Form	*robot;
+	Intern					randomIntern;
 	Bureaucrat				exec("David", 1);
-	Bureaucrat				no_exec("Maria", 150);	
-	std::cout << shrub << std::endl;
-	std::cout << presi << std::endl;
-	std::cout << robot << std::endl;
-	try
-	{
-		shrub.execute(exec);
-	}
-	catch(std::exception & e)
-	{
-		std::cerr << "Error: " << e.what() << std::endl;
-	}
-	try
-	{
-		presi.execute(exec);
-	}
-	catch(std::exception & e)
-	{
-		std::cerr << "Error: " << e.what() << std::endl;
-	}
-	try
-	{
-		robot.execute(exec);
-	}
-	catch(std::exception & e)
-	{
-		std::cerr << "Error: " << e.what() << std::endl;
-	}
+
+	/*Fail crating Forms*/
+
+	robot = randomIntern.makeForm("robotadfomy request", "Martin");
+	shrub = randomIntern.makeForm("shrubbeadsfadfjry creation", "Trees");
+	presi = randomIntern.makeForm("presidential padfaardon", "Tostarica");
+	
+	/*Create Forms*/
+
+	robot = randomIntern.makeForm("robotomy request", "Martin");
+	shrub = randomIntern.makeForm("shrubbery creation", "Trees");
+	presi = randomIntern.makeForm("presidential pardon", "Tostarica");
 
 	/* Sign */
 
 	try
 	{
-		shrub.beSigned(exec);
+		shrub->beSigned(exec);
 	}
 	catch(std::exception & e)
 	{
@@ -51,7 +37,7 @@ int		main(void)
 	}
 	try
 	{
-		presi.beSigned(exec);
+		presi->beSigned(exec);
 	}
 	catch(std::exception & e)
 	{
@@ -59,48 +45,21 @@ int		main(void)
 	}
 	try
 	{
-		robot.beSigned(exec);
+		robot->beSigned(exec);
 	}
 	catch(std::exception & e)
 	{
 		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	std::cout << shrub << std::endl;
-	std::cout << presi << std::endl;
-	std::cout << robot << std::endl;
-
-	/* Exec exception */
-
-	try
-	{
-		shrub.execute(no_exec);
-	}
-	catch(std::exception & e)
-	{
-		std::cerr << "Error: " << e.what() << std::endl;
-	}
-	try
-	{
-		presi.execute(no_exec);
-	}
-	catch(std::exception & e)
-	{
-		std::cerr << "Error: " << e.what() << std::endl;
-	}
-	try
-	{
-		robot.execute(no_exec);
-	}
-	catch(std::exception & e)
-	{
-		std::cerr << "Error: " << e.what() << std::endl;
-	}
+	std::cout << *shrub << std::endl;
+	std::cout << *presi << std::endl;
+	std::cout << *robot << std::endl;
 
 	/* Execute all */
 
 	try
 	{
-		shrub.execute(exec);
+		shrub->execute(exec);
 	}
 	catch(std::exception & e)
 	{
@@ -108,7 +67,7 @@ int		main(void)
 	}
 	try
 	{
-		presi.execute(exec);
+		presi->execute(exec);
 	}
 	catch(std::exception & e)
 	{
@@ -116,7 +75,7 @@ int		main(void)
 	}
 	try
 	{
-		robot.execute(exec);
+		robot->execute(exec);
 	}
 	catch(std::exception & e)
 	{

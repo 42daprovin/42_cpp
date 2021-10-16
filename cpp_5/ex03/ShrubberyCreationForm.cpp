@@ -37,7 +37,7 @@ void		ShrubberyCreationForm::execAction(void) const
 {
 	std::ofstream	os;
 
-	os.open(this->_target);
+	os.open(this->_target + "_shrubbery");
 	if (os.fail())
 	{
 		std::cerr << "Error writing" << std::endl;

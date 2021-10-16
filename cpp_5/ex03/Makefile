@@ -5,7 +5,8 @@ SRCS	= main.cpp \
 	  Form.cpp \
 	  ShrubberyCreationForm.cpp \
 	  PresidentialPardonForm.cpp \
-	  RobotomyRequestForm.cpp
+	  RobotomyRequestForm.cpp \
+	  Intern.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
@@ -15,7 +16,8 @@ DEPS	= Bureaucrat.hpp \
 	  Form.hpp \
 	  ShrubberyCreationForm.hpp \
 	  PresidentialPardonForm.hpp \
-	  RobotomyRequestForm.hpp
+	  RobotomyRequestForm.hpp \
+	  Intern.hpp
 
 all: ${NAME}
 
@@ -30,5 +32,6 @@ clean:
 
 fclean: clean
 	rm -f ${NAME}
+	rm -f *_shrubbery
 
 re: fclean all
