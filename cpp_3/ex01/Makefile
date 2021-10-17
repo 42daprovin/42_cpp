@@ -8,8 +8,11 @@ OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
-.cpp.o:
-	clang++ ${CFLAGS} -c $< -o ${<:.cpp=.o}
+DEPS	= ClapTrap.hpp \
+		  ScavTrap.hpp
+
+%.o: %.cpp ${DEPS}
+	clang++ -c -o $@ $< ${CFLAGS} 
 
 ${NAME}: ${OBJS}
 	clang++ ${CFLAGS} ${OBJS} -o ${NAME}

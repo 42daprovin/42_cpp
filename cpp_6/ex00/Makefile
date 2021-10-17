@@ -1,21 +1,21 @@
 NAME	= ex00
 
 SRCS	= main.cpp \
-		  ClapTrap.cpp
+	  Bureaucrat.cpp \
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
-DEPS	= ClapTrap.hpp
+DEPS	= Bureaucrat.hpp
+
+all: ${NAME}
 
 %.o: %.cpp ${DEPS}
 	clang++ -c -o $@ $< ${CFLAGS}
 
 ${NAME}: ${OBJS}
 	clang++ ${CFLAGS} ${OBJS} -o ${NAME}
-
-all: ${NAME}
 
 clean:
 	rm -f ${OBJS}
