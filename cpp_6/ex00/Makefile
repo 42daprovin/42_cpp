@@ -1,12 +1,13 @@
 NAME	= ex00
 
 SRCS	= main.cpp \
+		  Value.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
-DEPS	= 
+DEPS	=	Value.hpp 
 
 all: ${NAME}
 

@@ -1,6 +1,8 @@
 #ifndef VALUE_HPP
 # define VALUE_HPP
 
+# include <iostream>
+
 class Value
 {
 	public:
@@ -12,7 +14,9 @@ class Value
 
 		Value	& operator=(Value const & rhs);
 
-		void	display(void) const;
+		std::string		getvalue(void) const;
+
+		void	display(void);
 
 	private:
 

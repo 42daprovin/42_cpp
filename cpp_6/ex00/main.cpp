@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <iomanip>
+#include "Value.hpp"
 
 int		main(int argc, char **argv)
 {
@@ -12,7 +13,8 @@ int		main(int argc, char **argv)
 
 	Value	v(static_cast<std::string>(argv[1]));
 	
-	v.display();
+	std::cout << v.getvalue() << std::endl;
+	/* v.display(); */
 
 	return 0;
 }
