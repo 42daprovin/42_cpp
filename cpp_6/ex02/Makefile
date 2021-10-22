@@ -1,13 +1,10 @@
-NAME	= Convert
+NAME	= identify
 
-SRCS	= main.cpp \
-		  Value.cpp
+SRCS	= Identify.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
-
-DEPS	=	Value.hpp 
 
 all: ${NAME}
 

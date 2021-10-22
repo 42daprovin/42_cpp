@@ -1,13 +1,13 @@
-NAME	= Convert
+NAME	= Seriealize
 
 SRCS	= main.cpp \
-		  Value.cpp
+		  Serialize.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
-DEPS	=	Value.hpp 
+DEPS	=	Serialize.hpp 
 
 all: ${NAME}
 
