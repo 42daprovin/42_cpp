@@ -23,8 +23,8 @@ class Value
 		std::string		_value;
 		void			fromChar(char c) const;
 		void			fromInt(int	i) const;
-		void			fromFloat(float f) const;
-		void			fromDouble(double d) const;
+		void			fromFloat(std::string f) const;
+		void			fromDouble(std::string d) const;
 	
 };
 
