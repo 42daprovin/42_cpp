@@ -1,12 +1,13 @@
-NAME	= ex01
+NAME	= span
 
 SRCS	= main.cpp \
+		  mutantstack.cpp
 
 OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
-DEPS	= iter.hpp 
+DEPS	= mutantstack.hpp 
 
 all: ${NAME}
 
@@ -14,7 +15,7 @@ all: ${NAME}
 	c++ -c -o $@ $< ${CFLAGS}
 
 ${NAME}: ${OBJS}
-	clang++ ${CFLAGS} ${OBJS} -o ${NAME}
+	c++ ${CFLAGS} ${OBJS} -o ${NAME}
 
 clean:
 	rm -f ${OBJS}

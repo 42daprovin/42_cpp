@@ -1,5 +1,4 @@
 #include "span.hpp"
-#include <algorithm>
 
 Span::Span(void) : _maxSize(0)
 {
@@ -32,7 +31,7 @@ void	Span::addRandomRange(unsigned int const range)
 	int		r;
 	bool	sign;
 
-	for (int i = 0; i < range && this->v.size() < this->_maxSize; i++)
+	for (unsigned int i = 0; i < range && this->v.size() < this->_maxSize; i++)
 	{
 		r = std::rand() % 100;
 		sign = std::rand() % 2;
@@ -42,12 +41,63 @@ void	Span::addRandomRange(unsigned int const range)
 	}
 }
 
-void	display(int n)
+void	displayInt(int n)
 {
 	std::cout << "{ " << n << " }";
 }
 
 void	Span::display(void) const
 {
-	for_each (this->v.begin(), this->v.end(), display());	
+	std::for_each(this->v.begin(), this->v.end(), displayInt);	
+	std::cout << std::endl;
+}
+
+unsigned int	fabs(int a)
+{
+	return (a < 0 ? a * -1 : a);
+}
+
+unsigned int	Span::shortestSpan(void)
+{
+	unsigned int		span;
+
+	std::vector<int>::const_iterator		end = this->v.end();
+	std::vector<int>::const_iterator		i;
+
+	if (this->v.size() < 2)
+		throw Span::NotEnoughNumbersException();
+	else
+	{
+		span = fabs(this->v[0] - this->v[1]);
+		std::sort(this->v.begin(), this->v.end());
+
+		for (i = this->v.begin(); i + 1 != end; ++i)
+		{
+			if (span > fabs(*i - *(i + 1)))
+				span = fabs(*i - *(i + 1));
+		}
+		return span;
+	}
+}
+
+unsigned int	Span::longestSpan(void) const
+{
+	int		min;	
+	int		max;
+
+	if (this->v.size() < 2)
+		throw Span::NotEnoughNumbersException();
+	else
+	{
+		min = *std::min_element(this->v.begin(), this->v.end());
+		max = *std::max_element(this->v.begin(), this->v.end());
+
+		return (max - min);
+	}
+}
+
+void	Span::addNumberRange(int const n, unsigned int const range)
+{
+	for(unsigned int i = 0; i < range && this->v.size() < this->_maxSize; i++)	
+		v.push_back(n);
 }

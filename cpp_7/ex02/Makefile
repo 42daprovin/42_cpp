@@ -6,7 +6,7 @@ OBJS	= ${SRCS:.cpp=.o}
 
 CFLAGS = -Wall -Werror -Wextra
 
-DEPS	= iter.hpp 
+DEPS	= Array.hpp 
 
 all: ${NAME}
 

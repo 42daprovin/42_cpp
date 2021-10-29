@@ -11,7 +11,7 @@ DEPS	= whatever.hpp
 all: ${NAME}
 
 %.o: %.cpp ${DEPS}
-	clang++ -c -o $@ $< ${CFLAGS}
+	c++ -c -o $@ $< ${CFLAGS}
 
 ${NAME}: ${OBJS}
 	clang++ ${CFLAGS} ${OBJS} -o ${NAME}

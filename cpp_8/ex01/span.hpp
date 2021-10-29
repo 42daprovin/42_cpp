@@ -14,6 +14,7 @@ class Span
 
 		void	addNumber(int const n);
 		void	addRandomRange(unsigned int const range);
+		void	addNumberRange(int const n, unsigned int const range);
 
 		class NotSpaceException : public std::exception
 		{
@@ -27,7 +28,19 @@ class Span
 				{}
 		};
 
-		unsigned int	shortestSpan(void) const;
+		class NotEnoughNumbersException : public std::exception
+		{
+			public:
+				
+				virtual const char* what() const throw()	
+				{
+					return ("Not enough numbers stored!");
+				}
+				virtual ~NotEnoughNumbersException() throw()
+				{}
+		};
+
+		unsigned int	shortestSpan(void);
 		unsigned int	longestSpan(void) const;
 
 		void			display(void) const;
