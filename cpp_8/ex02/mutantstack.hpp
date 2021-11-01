@@ -10,22 +10,9 @@ class MutantStack : public std::stack<T>
 {
 	public:
 
-		class iterator : public std::iterator<std::input_iterator_tag, T>
-		{
-			public:
-				iterator(T * v) : p(v) {}
-				iterator(iterator const &	src) : p(src.p) {}
-				iterator() : p(NULL) {}
-
-
-			private:
-				T	* p;
-		};
-		iterator &	begin(void)
-		{
-			iterator	it(&this->top());
-			return it;
-		}	
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		iterator		begin() {return this->c.begin();}
+		iterator		end() {return this->c.end();}
 };
 
 #endif
